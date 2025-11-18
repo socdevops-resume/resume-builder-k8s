@@ -11,15 +11,12 @@ It is the **deployment layer** of the project: it knows nothing about how to bui
 This repo works together with three application repos:
 
 - **Frontend**
-  - `https://github.com/socovidiu/Resume_generator_frontend`
   - React-based web UI for creating and managing resumes.
 
 - **Resume API (Backend)**
-  - `https://github.com/socovidiu/CV_Generator_API`
   - Main business logic: resume generation, parsing, and API endpoints consumed by the frontend.
 
-- **LLM / Chatbot Service**
-  - `https://github.com/socovidiu/chatbot-service`
+- **LLM / LLM Service**
   - FastAPI-based service that talks to an LLM and provides AI-assisted resume suggestions / chat.
 
 - **Database**

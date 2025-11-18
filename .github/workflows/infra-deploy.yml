@@ -47,32 +47,32 @@ jobs:
         with:
           project_id: ${{ env.PROJECT_ID }}
 
-      - name: Set up Terraform
-        uses: hashicorp/setup-terraform@v3
+      - name: Set up OpenTofu
+        uses: opentofu/setup-opentofu@v1
         with:
-          terraform_version: 1.8.0
+          tofu_version: "1.8.0"
 
       - name: Tofu  init
         working-directory: ./terraform
-        run: tofu  init
+        run: tofu init
 
       - name: Tofu  fmt
         working-directory: ./terraform
-        run: tofu  fmt -check
+        run: tofu fmt -check
 
       - name: TerrTofu aform validate
         working-directory: ./terraform
-        run: tofu  validate
+        run: tofu validate
 
       - name: Tofu  plan
         if: github.event_name == 'pull_request'
         working-directory: ./terraform
-        run: tofu  plan -input=false
+        run: tofu plan -input=false
 
       - name: Tofu  apply
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         working-directory: ./terraform
-        run: tofu  apply -input=false -auto-approve
+        run: tofu apply -input=false -auto-approve
 
   helm-deploy:
     name: Helm install/upgrade services
