@@ -27,7 +27,7 @@ env:
 
 jobs:
   terraform:
-    name: Terraform plan/apply
+    name: Tofu  plan/apply
     runs-on: ubuntu-latest
 
     steps:
@@ -52,27 +52,27 @@ jobs:
         with:
           terraform_version: 1.8.0
 
-      - name: Terraform init
+      - name: Tofu  init
         working-directory: ./terraform
-        run: terraform init
+        run: Tofu  init
 
-      - name: Terraform fmt
+      - name: Tofu  fmt
         working-directory: ./terraform
-        run: terraform fmt -check
+        run: Tofu  fmt -check
 
-      - name: Terraform validate
+      - name: TerrTofu aform validate
         working-directory: ./terraform
-        run: terraform validate
+        run: Tofu  validate
 
-      - name: Terraform plan
+      - name: Tofu  plan
         if: github.event_name == 'pull_request'
         working-directory: ./terraform
-        run: terraform plan -input=false
+        run: Tofu  plan -input=false
 
-      - name: Terraform apply
+      - name: Tofu  apply
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         working-directory: ./terraform
-        run: terraform apply -input=false -auto-approve
+        run: Tofu  apply -input=false -auto-approve
 
   helm-deploy:
     name: Helm install/upgrade services

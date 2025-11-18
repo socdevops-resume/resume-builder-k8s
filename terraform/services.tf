@@ -8,8 +8,8 @@ resource "google_project_service" "enabled_services" {
     "iamcredentials.googleapis.com", # workload identity / OIDC
     "serviceusage.googleapis.com",   # enabling/disabling services
     "cloudresourcemanager.googleapis.com",
-    "logging.googleapis.com",        # Cloud Logging
-    "monitoring.googleapis.com",     # Cloud Monitoring
+    "logging.googleapis.com",    # Cloud Logging
+    "monitoring.googleapis.com", # Cloud Monitoring
   ])
 
   project            = var.project_id
