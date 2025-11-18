@@ -14,7 +14,7 @@ permissions:
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
   REGION: ${{ secrets.GCP_REGION }}
-  GKE_CLUSTER_NAME: "resume-gke-dev"   # match your cluster
+  GKE_CLUSTER_NAME: "resume-gke"   
   GKE_LOCATION: "us-central1"
   NAMESPACE: "resume"
 
@@ -29,8 +29,10 @@ jobs:
       - name: Auth to Google Cloud
         uses: google-github-actions/auth@v2
         with:
+          project_id: ${{ env.PROJECT_ID }}
           workload_identity_provider: ${{ secrets.GCP_WORKLOAD_ID_PROVIDER }}
           service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+          create_credentials_file: true
 
       - name: Set up gcloud
         uses: google-github-actions/setup-gcloud@v2
