@@ -24,8 +24,10 @@ gcloud iam workload-identity-pools create "${POOL_ID}" \
   --location="${LOCATION}" \
   --display-name="GitHub Actions Pool"
 ```
-List Workload Identity Pools
 
+
+List Workload Identity Pools
+```
 gcloud iam workload-identity-pools list \
   --project="${PROJECT_ID}" \
   --location="${LOCATION}"
@@ -93,4 +95,23 @@ gcloud projects add-iam-policy-binding "${PROJECT_ID}" \
   --role="roles/monitoring.metricWriter"
 
 
+```
+
+
+
+# remote state backend (GCS)
+```
+PROJECT_ID="resume-builder-platform"
+BUCKET_NAME="resume-builder-tfstate"
+
+gcloud storage buckets create gs://$BUCKET_NAME \
+  --project=$PROJECT_ID \
+  --location=us    # or your preferred region/multi-region
+
+# Grant the GitHub Actions Service Account access to the GCS bucket
+SA_EMAIL="github-ci@${PROJECT_ID}.iam.gserviceaccount.com"
+
+gcloud storage buckets add-iam-policy-binding gs://$BUCKET_NAME \
+  --member="serviceAccount:${SA_EMAIL}" \
+  --role="roles/storage.objectAdmin"
 ```
