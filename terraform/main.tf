@@ -3,7 +3,7 @@ terraform {
 
   backend "gcs" {
     bucket = "resume-builder-tfstate"
-    prefix = "infra"          
+    prefix = "infra"
   }
 
   required_providers {

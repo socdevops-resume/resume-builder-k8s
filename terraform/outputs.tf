@@ -30,7 +30,7 @@ output "gke_node_sa_email" {
 
 output "artifact_registry_repos" {
   value = {
-    for name, repo in google_artifact_registry_repository.repos :
+    for name, repo in data.google_artifact_registry_repository.repos :
     name => repo.repository_id
   }
   description = "Artifact Registry repositories"
