@@ -24,6 +24,9 @@ env:
   GKE_CLUSTER_NAME: "resume-gke"   
   GKE_LOCATION: "us-central1"          
   NAMESPACE: "resume"
+  # Make these visible to Tofu as input variables:
+  TF_VAR_project_id: ${{ secrets.GCP_PROJECT_ID }}
+  TF_VAR_region: ${{ secrets.GCP_REGION }}
 
 jobs:
   terraform:
