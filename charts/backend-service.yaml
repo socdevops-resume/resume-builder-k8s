@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend           # << this MUST be "backend"
+  namespace: resume
+spec:
+  selector:
+    app.kubernetes.io/name: resume-api   # adjust if your labels differ
+  ports:
+    - name: http
+      port: 8080          # Service port (what nginx uses)
+      targetPort: 8080    # Container port in your .NET app
+      protocol: TCP

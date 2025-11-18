@@ -1,0 +1,43 @@
+# === Terraform ===
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+crash.log
+override.tf
+override.tf.json
+*.tfvars
+*.tfvars.json
+
+# Sensitive Terraform outputs
+terraform.tfvars
+*.auto.tfvars
+
+# === Kubernetes Secrets ===
+# Never commit secrets manifests
+*secrets.yaml
+*secret.yaml
+*credentials.yaml
+
+# K8s generated files
+*.kubeconfig
+kubeconfig
+*.token
+
+# === Helm ===
+charts/*/charts/
+charts/*/tmp/
+charts/*/values.local.yaml
+
+# === Logs ===
+*.log
+
+# === System files ===
+.DS_Store
+Thumbs.db
+
+# === Node / Frontend ===
+node_modules/
+dist/
+build/
+.env
+.env.*
