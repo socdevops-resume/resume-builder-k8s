@@ -11,6 +11,7 @@ override.tf.json
 # Sensitive Terraform outputs
 terraform.tfvars
 *.auto.tfvars
+*.tfplan
 
 # === Kubernetes Secrets ===
 # Never commit secrets manifests
